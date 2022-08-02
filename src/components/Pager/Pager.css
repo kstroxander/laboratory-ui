@@ -1,0 +1,43 @@
+.pager {
+    font-size: .85rem;
+    display: flex;
+    align-items: center;
+}
+
+.pager .count-display {
+}
+
+.pager .controls-display {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pager .controls-display .control {
+    padding: .5em;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+}
+
+.pager .controls-display .control:hover {
+    cursor: pointer;
+    user-select: none;
+}
+
+.pager .controls-display .control:hover,
+.pager .controls-display .control.selected{
+    font-weight: bold;
+    color: #151557;
+}
+
+.pager .controls-display .control.selected {
+    background-color: #dedede;
+}
+
+.pager .controls-display .control.disabled {
+    opacity: .5;
+    cursor: initial;
+}

@@ -1,0 +1,15 @@
+.loading-indicator {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.loading-indicator img {
+    width: 25px;
+}
+
+.loading-indicator span {
+    font-size: 1rem;
+    color: #545454;
+    font-weight: bold;
+}

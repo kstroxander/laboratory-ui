@@ -1,0 +1,31 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.modal-dialog {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.modal-dialog.auto-width {
+    width: fit-content;
+}
+
+@media (min-width: 992px) {
+    .modal-dialog {
+        width: 900px;
+    }
+    .modal-dialog.auto-width {
+        width: fit-content;
+    }
+}

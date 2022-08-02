@@ -1,0 +1,15 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .app {
+        width: 1024px;
+        margin: 0 auto;
+    }
+}

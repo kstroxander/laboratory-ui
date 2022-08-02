@@ -1,0 +1,12 @@
+.test-details-dialog h5 {
+    margin-bottom: 15px;
+}
+
+.test-details-dialog > div {
+    margin-bottom: 20px;
+}
+
+.test-patient-name-details {
+    font-weight: bold;
+    font-size: 1.4rem;
+}

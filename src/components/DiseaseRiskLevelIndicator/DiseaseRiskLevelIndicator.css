@@ -1,0 +1,42 @@
+
+.level-indicator {
+    height: .8rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    background: linear-gradient(270deg, #F70707 1.41%, #F49135 41.71%, #EFF314 76.27%, #08D003 100%);
+}
+.level-indicator-value {
+    background-color: #ced4da;
+    width: 100%;
+}
+
+.level-indicator-value.alto {
+    width: 0%;
+}
+
+.level-indicator-value.medio {
+    width: 45%;
+}
+
+.level-indicator-value.bajo {
+    width: 70%;
+}
+
+.level-indicator .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: .6rem;
+    font-weight: bold;
+}
+
+.level-indicator.lg {
+    height: 1rem;
+}
+
+.level-indicator.lg .overlay {
+    font-size: .8rem;
+}
