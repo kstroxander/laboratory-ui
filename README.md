@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# laboratoy-ui
+Repositorio que contiene el codigo fuente para reto tecnico realizado en el proceso de seleccion con i4digital.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Stack
 
-## Available Scripts
+* Java 1.8
+* Spring Boot
+* Webflux
+* R2DBC
+* H2 Database
+* JOOQ
+* Lombok
+* MapStruct
 
-In the project directory, you can run:
+## Modelo
 
-### `npm start`
+* MeasurableProperty: Clase que representa un atributo / analito / paraclinico humano medible (Ej: % de azucar en sangre, % de oxigeno)
+  * id: Identificador unico de un atributo medible
+  * name: Nombre corto de un atributo medible
+  * description: Desccripción detallada sobre un atributo medible
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* DiseaseType: Clase que representa un tipo de enfermedad
+  * id: Identificador unico de un tipo enfermedad
+  * name: Nombre corto de un tipo enfermedad
+  * description: Desccripción detallada sobre un tipo enfermedad
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* DiseaseRiskLevel: Clase que representa un nivel de riesgo de enfermedad
+  * id: Identificador unico de un nivel de riesgo
+  * name: Nombre corto de un nivel de riesgo
+  * description: Desccripción detallada sobre un nivel de riesgo
 
-### `npm test`
+* BloodTest: Clase que representa la informaci&oacute;n de un examen de sangre
+  * id: Identificador unico de un examen de sangre
+  * patientName: Nombre del paciente a quien se le practica un examen
+  * createdBy: Atributo con proposito de auditoria, el cual hace referencia al usuario que registra un examen de sangre
+  * createdAt: Atributo con proposito de auditoria, el cual hace referencia la fecha de registro de un examen de sangre
+  * modifiedBy: Atributo con proposito de auditoria, el cual hace referencia al usuario que recientemente modific&oacute; un examen de sangre
+  * modifiedAt: Atributo con proposito de auditoria, el cual hace referencia la fecha mas reciente en que se modificó un examen de sangre
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* BloodTestMeasurement: Clase que representa las lecturas ingresadas al momento de registrar un examen de sangre (Porcentaje Azucar: 10)
+  * id: Identificador unico de un registro de medici&oacute;n
+  * measuredProperty: Objeto que representa a un atributo medible del ser humano
+  * testId: Apuntador que hace referencia al examen de sangre al cual pertenece una medici&oacute;n
+  * measuredValue: Valor leido para determinado atributo dentro de un examen de sangre
+  * createdBy: Atributo con proposito de auditoria, el cual hace referencia al usuario que registra las mediciones de un examen de sangre
+  * createdAt: Atributo con proposito de auditoria, el cual hace referencia la fecha de registro de una medicion
+  * modifiedBy: Atributo con proposito de auditoria, el cual hace referencia al usuario que recientemente modific&oacute; la medicion
+  * modifiedAt: Atributo con proposito de auditoria, el cual hace referencia la fecha mas reciente en que se modificó una medici&oacute;n
 
-### `npm run build`
+* BloodTestResult: Clase que representa un resultado, producto de el ingreso de mediciones y la ejecución del proceso calculo del riesgo
+  * Id: Identificador unico de un registro de un resultado
+  * testId: Identificado del examen de sangre al cual pertenece un resultado
+  * diseaseType: Enfermedad para la cual se calcula un nivel de riesgo
+  * riskLevel: Indica el nivel de riesgo de una enfernedad, calculado a partir de un conjunto de lecturas 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* DiseaseTypeRiskConfiguration: Clase que representa la configuraci&oacute;n de reglas para determinar niveles de riesgo por enfermedad
+  * Id: Identificador unico de una configuracion de nivel de riesgo
+  * diseaseType: Tipo de enfermedad para la cual aplica una configuracion de reglas
+  * riskLevel: Nivel de riesgo relacionado con un conjunto de reglas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* DiseaseTypeRiskConfigurationThreshold: Clase que almacena lo configuracion de limites con base en los cuales se calculan los niveles de riesgo
+* configurationId: Identificador que apunta hacia el registro de configuracion,que agrupa un rango de limites
+* measurableProperty: Propiedad medible, sobre la cual se especifican los limites a considerar en una regla de niveles de riesgo
+* minThreshold: Define el valor minimo de la propiedad medible indicada en la regla
+* minThreshold: Define el valor maximo de la propiedad medible indicada en la regla
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
