@@ -17,7 +17,6 @@ function CreateEditBloodTest({isVisible, setIsVisible, onTestSaved}) {
 
     const saveTest = (data) => {
         saveTestApi.request(data);
-        onTestSaved(saveTestApi.data);
     };
 
     const closeDialog = () => {
@@ -25,6 +24,9 @@ function CreateEditBloodTest({isVisible, setIsVisible, onTestSaved}) {
     }
 
     useEffect(() => {
+        if(saveTestApi.data) {
+            onTestSaved(saveTestApi.data);
+        }
         setIsVisible(!!!saveTestApi.data);
     }, [saveTestApi.data]);
 
